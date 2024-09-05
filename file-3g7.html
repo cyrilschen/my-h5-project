@@ -24,5 +24,23 @@
             });
         });
     </script>
+    <button id="requestPermission">请求权限</button>
+    <script>
+        document.getElementById('requestPermission').addEventListener('click', function () {
+            navigator.permissions.query({ name: 'camera' }).then(function (permissionStatus) {
+                if (permissionStatus.state === 'granted') {
+                    alert('已获取权限');
+                } else if (permissionStatus.state === 'prompt') {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        alert('已获取权限');
+                    }, function (error) {
+                        alert('获取权限失败');
+                    });
+                } else {
+                    alert('没有权限');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
