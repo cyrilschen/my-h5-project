@@ -6,7 +6,7 @@
     <title>权限测试</title>
 </head>
 <body>
-    <button id="requestPermission">请求权限</button>
+    <button id="requestPermission">请求位置权限</button>
     <script>
         document.getElementById('requestPermission').addEventListener('click', function () {
             navigator.permissions.query({ name: 'geolocation' }).then(function (permissionStatus) {
@@ -24,7 +24,7 @@
             });
         });
     </script>
-    <button id="requestPermission">请求权限</button>
+    <button id="requestPermission">请求相机权限</button>
     <script>
         document.getElementById('requestPermission').addEventListener('click', function () {
             navigator.permissions.query({ name: 'camera' }).then(function (permissionStatus) {
