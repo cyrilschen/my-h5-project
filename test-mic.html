@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test Mic Access</title>
+  </head>
+  <body>
+    <button id="test-mic">Test Microphone</button>
+    <p id="status"></p>
+    <script>
+      document.getElementById('test-mic').addEventListener('click', function() {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(function(stream) {
+            document.getElementById('status').textContent = 'Microphone access allowed';
+            stream.getTracks().forEach(track => track.stop());
+          })
+          .catch(function(err) {
+            document.getElementById('status').textContent = 'Microphone access denied';
+          });
+      });
+    </script>
+  </body>
+</html>
