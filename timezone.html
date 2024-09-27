@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取时区信息</title>
+</head>
+<body>
+    <h1>获取手机系统的时区信息</h1>
+    <p id="timezone"></p>
+
+    <script>
+        // 获取时区信息
+        function getTimeZone() {
+            // 使用Intl.DateTimeFormat().resolvedOptions().timeZone获取时区
+            const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            return timeZone;
+        }
+
+        // 显示时区信息
+        document.getElementById('timezone').innerText = '您的时区是：' + getTimeZone();
+    </script>
+</body>
+</html>
