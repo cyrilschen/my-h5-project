@@ -8,6 +8,7 @@
 <body>
     <button onclick="setCookie()">Set Cookie</button>
     <button onclick="getCookie()">Get Cookie</button>
+    <button onclick="deleteCookie()">Delete Cookie</button>
     <div id="cookieValue"></div>
 
     <script>
@@ -19,6 +20,11 @@
         function getCookie() {
             const cookieValue = document.cookie;
             document.getElementById("cookieValue").innerText = "Current Cookie: " + cookieValue;
+        }
+
+        function deleteCookie() {
+            document.cookie = "username=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            alert("Cookie deleted!");
         }
     </script>
 </body>
