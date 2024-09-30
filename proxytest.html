@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Test</title>
+</head>
+<body>
+    <h1>Proxy Test</h1>
+    <button onclick="checkProxy()">Check Proxy</button>
+    <div id="networkInfo"></div>
+
+    <script>
+        function checkProxy() {
+            // 使用 ipify API 获取客户端的公共 IP 地址
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    document.getElementById('networkInfo').innerHTML = `Your IP Address: ${ip}`;
+                    
+                    // 使用 ipinfo API 获取更多网络信息
+                    fetch(`https://ipinfo.io/${ip}/json?token=YOUR_TOKEN_HERE`)
+                        .then(response => response.json())
+                        .then(info => {
+                            document.getElementById('networkInfo').innerHTML += `<br>Location: ${info.city}, ${info.region}, ${info.country}`;
+                            document.getElementById('networkInfo').innerHTML += `<br>ISP: ${info.org}`;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching IP info:', error);
+                        });
+                })
+                .catch(error => {
+                    console.error('Error fetching IP address:', error);
+                });
+        }
+    </script>
+</body>
+</html>
